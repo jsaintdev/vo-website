@@ -273,21 +273,17 @@ margin-top: 16px;
         text-align: center;
     }
 
-    /* RIGHT-ALIGN the player download button */
     .player__actions {
         justify-content: flex-end;
-        /* ✅ pushes it to the right */
     }
 
     .cta-block {
         gap: clamp(16px, 3vh, 28px);
     }
 
-    /* CENTER the Download CV button */
     .cta-row>div:last-child {
         display: flex;
         justify-content: center;
-        /* ✅ centers the CV button in its row */
     }
 
     .agency {
@@ -297,9 +293,19 @@ margin-top: 16px;
         /* shrink-wrap logo & text nicely */
     }
 
+    .player {
+        margin-top: clamp(12px, 2vh, 20px);
+    };
+
+    .as-heard {
+      margin-top: clamp(12px, 2vh, 20px);
+      margin-bottom: clamp(20px, 3vh, 32px);
+    }
+
     /* Add a bit of breathing room between Download CV and button row */
     .btn-row {
         margin-top: clamp(12px, 2vh, 20px);
+        margin-bottom: 0;
     }
 }
 
