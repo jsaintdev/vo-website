@@ -1,0 +1,12 @@
+{
+  "name": "vo-website",
+  "version": "1.0.0",
+  "description": "Source code for my personal voiceover acting website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
