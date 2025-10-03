@@ -1,14 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Justin Saint Voiceover</title>
-  <link rel="stylesheet" href="../assets/css/styles.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Justin Saint Voiceover</title>
+
+    <!-- FAVICONS -->
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/img/favicon-32.png">
+    <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+
+    <!-- STYLES -->
+    <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
+
 <body>
-  <main>
-    <h1>Justin Saint Voiceover</h1>
-  </main>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header__inner">
+            <a href="/" class="header__logo-link" aria-label="Home">
+                <img class="header__logo" src="./assets/img/logo.png" alt="JS logo">
+            </a>
+            <div class="header__title">
+                <h1 class="header__name">JUSTIN SAINT VOICEOVER</h1>
+                <p class="header__tagline">Animation · Narration · Commercial</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- HERO -->
+        <section class="section section--hero">
+            <div class="container hero hero--cols">
+
+                <!-- HEADSHOT -->
+                <div class="hero__imgwrap">
+                    <img src="./assets/img/headshot.png" alt="Headshot of Justin Saint">
+                </div>
+
+                <!-- HERO CONTENT -->
+                <div class="hero__content">
+
+                    <!-- AUDIO PLAYER -->
+                    <section class="player" role="group" aria-labelledby="demo-title">
+                        <div class="player__meta">
+                            <h1 id="demo-title" class="player__title">Animation Demo</h1>
+                        </div>
+
+                        <audio id="demo-audio" controls preload="metadata" controlsList="noplaybackrate">
+                            <source src="./assets/media/animation-demo.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+
+                        <div class="player__actions">
+                            <a class="btn btn--ghost" href="./assets/media/animation-demo.mp3" download
+                                aria-label="Download Animation Demo (MP3)">Download</a>
+                        </div>
+                    </section>
+
+                    <!-- AS HEARD ON -->
+                    <div class="as-heard">
+                        <h3>As Heard On</h3>
+                        <img class="shows-grid" src="./assets/img/Shows-Grid.jpg" alt="Grid of shows">
+                    </div>
+
+                    <!-- CONTACT SECTION -->
+                    <div class="cta-block">
+
+                        <div class="cta-row">
+                            <div class="agency">
+                                <img class="agency__logo" src="./assets/img/mvm.png" alt="MVM Agency logo" width="40"
+                                    height="40">
+                                <p style="margin:0">
+                                    Represented by <strong>Melanie Eng</strong>
+                                    <a id="agent-email">[enable JS to view email]</a>
+                                </p>
+                            </div>
+
+                            <div>
+                                <a class="btn btn--ghost" href="./assets/docs/Justin Saint-RESUME VO.pdf"
+                                    download>Download CV</a>
+                            </div>
+                        </div>
+
+                        <div class="btn-row btn-row--center">
+                            <a class="btn--insta" href="https://instagram.com/justincuddlescats" target="_blank"
+                                rel="noopener">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path
+                                        d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zm5.75-3.25a1.25 1.25 0 1 1-1.25 1.25 1.25 1.25 0 0 1 1.25-1.25z" />
+                                </svg>
+                            </a>
+
+
+                            <a id="email-btn" class="btn btn--accent placeholder"
+                                aria-label="Email Justin Saint (enable JS)">
+                                [enable JS to view email]
+                            </a>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">© <span id="y"></span>&nbsp; Justin Saint. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="./assets/js/main.js" defer></script>
 </body>
+
 </html>

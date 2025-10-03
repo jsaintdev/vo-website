@@ -1,22 +1,320 @@
-/* ========================== BASE ========================== */
-:root {
-  --bg: #2a3f42;
+/* ========================================================================== */
+/*                                 THEME TOKENS                                */
+/* ========================================================================== */
+:root{
+  /* Backgrounds & text */
+  --bg: #1E1B26;       /* deep charcoal-plum */
+  --bg-alt: #15121C;   /* darker panels/footers */
+  --hero-bg: #100d12;  /* extracted from headshot bg */
   --text: #ffffff;
+
+  /* Brand accents */
+  --highlight: #9B5DE5; /* purple highlight (replaces #33D39D) */
+  --accent: #ff8a3d;    /* signature orange (kept for future) */
+  --gold: #FFD700;      /* gold accent */
+  --accent: #DAA520;    /* darker gold accent */
+
+  /* Layout */
+  --container: min(1100px, 92vw);
+  --gutter: clamp(12px, 1.8vw, 20px);
+  --space: clamp(12px, 2vw, 24px);
+
+  /* Type */
+  --h1: clamp(28px, 6vw, 56px);
+  --h2: clamp(18px, 3.2vw, 28px);
+  --body: clamp(15px, 2.1vw, 18px);
 }
 
-html, body {
-  height: 100%;
+/* ========================================================================== */
+/*                                     BASE                                   */
+/* ========================================================================== */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
   margin: 0;
-  padding: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: system-ui, sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font: 400 var(--body)/1.55 system-ui, -apple-system, Segoe UI, Roboto, Inter, sans-serif;
+}
+a { color: var(--highlight); text-decoration: none; }
+a:hover { color: var(--accent); }
+img { max-width: 100%; height: auto; display: block; }
+h1 { font-size: var(--h1); margin: 0 0 4px; }
+
+/* ========================================================================== */
+/*                                    LAYOUT                                  */
+/* ========================================================================== */
+.section { padding: clamp(20px, 4vw, 48px) 0; }
+.container { width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
+
+/* Hero */
+.section--hero {
+  background:
+    radial-gradient(1200px 600px at 20% 30%, rgba(155,93,229,0.12), transparent 60%),
+    linear-gradient(180deg, rgba(255,216,0,0.06), transparent 40%),
+    var(--hero-bg);
+  padding: clamp(10px, 2vw, 24px) 0; /* tightened vertical rhythm */
+}
+.hero { display: grid; gap: var(--gutter); }
+.hero--cols { align-items: stretch; } /* equal-height columns */
+
+/* Left column (headshot) */
+.hero__imgwrap { height: 100%; }
+.hero__imgwrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* swap to 'contain' for zero crop */
+  border-radius: 8px;     /* optional */
 }
 
-h1 {
-  font-size: clamp(2rem, 5vw, 4rem);
+/* Right column (content) */
+.hero__content {
+  display: grid;
+  grid-template-rows: auto auto auto 1fr auto; /* Title | LISTEN | Player | spacer | CTA/contact */
+  gap: var(--space);
+  height: 100%;
+}
+.hero__sub { font-size: var(--h2); opacity: 0.9; }
+
+/* “As heard on” */
+.as-heard { 
+    text-align: center;
+}
+.as-heard h3 {
+  font-size: clamp(18px, 2.6vw, 24px);
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+.as-heard .shows-grid {
+  display: block;
+  margin-inline: auto;
+  max-width: 90%;
+  max-height: clamp(200px, 32vh, 400px);
+  object-fit: contain;
+  margin-bottom: 16px;
+}
+
+/* Contact / CTA */
+.cta-block {
+margin-top: 16px;
+  align-self: end;            /* anchors the whole contact block to bottom */
+  display: grid;
+  gap: var(--space);
+}
+.cta-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--gutter);
+}
+.agency {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 12px;
+  align-items: center;
+}
+.agency__logo { width: 40px; height: 40px; border-radius: 6px; background: #00000033; }
+
+.btn-row {
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.btn-row--center { justify-content: center; }
+
+/* Buttons: base */
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, var(--gold), #d8b200);
+  color: #1a1a1a;
+  font-weight: 600;
+  border: none;
   text-align: center;
+}
+.btn:hover { filter: brightness(1.05); }
+
+/* Buttons: ghost (black with gold text/border) */
+.btn--ghost {
+  background: transparent;
+  border: 2px solid var(--gold);
+  color: var(--gold);
+  padding: 8px 14px;
+}
+.btn--ghost:hover { background: rgba(255,215,0,0.12); }
+
+/* Buttons: gold (solid gold with white text) */
+.btn--accent {
+  background: linear-gradient(
+    180deg,
+    var(--accent) 0%,
+    var(--accent) 80%,
+    #9c6d08 100%
+  );
+  color: #000; /* <-- black text */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  text-align: center;
+  transition: filter 0.2s ease;
+}
+
+.btn--accent:hover {
+  filter: brightness(1.1);
+}
+
+
+/* Instagram circular button */
+.btn--insta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(
+    180deg,
+    var(--accent) 0%,
+    var(--accent) 80%,
+    #9c6d08 100%
+  );
+  border: none;
+  cursor: pointer;
+  transition: filter 0.2s ease;
+}
+
+.btn--insta:hover {
+  filter: brightness(1.1);
+}
+
+.btn--insta svg {
+  width: 24px;   /* increase size */
+  height: 24px;
+  fill: #000000; /* keep black */
+}
+
+
+
+/* Placeholder state until JS injects the email */
+.btn.placeholder { opacity: 0.65; pointer-events: none; }
+
+/* Footer */
+.footer { padding: 16px 0; background: var(--bg-alt); }
+.footer .container { display: flex; justify-content: center; opacity: .8; font-size: 14px; }
+
+/* ========================================================================== */
+/*                                   HEADER                                   */
+/* ========================================================================== */
+.header {
+  width: 100%;
+  background: var(--bg-alt);
+  padding: clamp(10px, 1.8vw, 16px) clamp(16px, 2.4vw, 24px);
+  display: flex;
+  justify-content: center;
+}
+.header__inner {
+  width: var(--container);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space);
+}
+.header__logo-link { display: flex; align-items: center; }
+.header__logo { width: 48px; height: 48px; flex-shrink: 0; border-radius: 10px; }
+.header__title { display: flex; flex-direction: column; align-items: flex-end; text-align: right; }
+.header__name { margin: 0; font-size: clamp(20px, 3vw, 28px); letter-spacing: 0.5px; }
+.header__tagline { margin: 0; font-size: clamp(13px, 2vw, 15px); opacity: 0.85; }
+
+/* ========================================================================== */
+/*                                AUDIO PLAYER                                */
+/* ========================================================================== */
+.player {
+  display: grid;
+  gap: var(--space);
+  padding: clamp(8px, 1.6vw, 12px);
+  border-radius: 14px;
+  background: linear-gradient(180deg, #1f1a28 0%, #15121c 100%);
+  box-shadow: 0 8px 30px rgba(0,0,0,.35);
+}
+.player__meta { display: grid; gap: 4px; }
+.player__title { margin: 0; font-size: clamp(20px, 3.4vw, 26px); letter-spacing: .2px; }
+.player audio { width: 100%; }
+.player__actions { display: flex; gap: 12px; align-items: center; }
+
+/* ========================================================================== */
+/*                              ORIENTATION QUERIES                           */
+/* ========================================================================== */
+
+/* Portrait: stack columns; single-column CTA; center header */
+@media (orientation: portrait) {
+    .hero--cols {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-row {
+        grid-template-columns: 1fr;
+    }
+
+    .header__inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .header__title {
+        align-items: center;
+        text-align: center;
+    }
+
+    /* RIGHT-ALIGN the player download button */
+    .player__actions {
+        justify-content: flex-end;
+        /* ✅ pushes it to the right */
+    }
+
+    .cta-block {
+        gap: clamp(16px, 3vh, 28px);
+    }
+
+    /* CENTER the Download CV button */
+    .cta-row>div:last-child {
+        display: flex;
+        justify-content: center;
+        /* ✅ centers the CV button in its row */
+    }
+
+    .agency {
+        justify-content: center;
+        text-align: center;
+        grid-template-columns: auto 1fr;
+        /* shrink-wrap logo & text nicely */
+    }
+
+    /* Add a bit of breathing room between Download CV and button row */
+    .btn-row {
+        margin-top: clamp(12px, 2vh, 20px);
+    }
+}
+
+/* Landscape: two columns and tidy player layout */
+@media (orientation: landscape){
+  .hero--cols { grid-template-columns: minmax(320px, 520px) 1fr; }
+  .player{
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "meta actions"
+      "audio audio";
+    align-items: center;
+  }
+  .player__meta { grid-area: meta; }
+  .player__actions { grid-area: actions; justify-self: end; }
+  .player audio { grid-area: audio; }
+  .cta-row { align-self: end; } /* nudges agency/CV block lower for balance */
 }
