@@ -33,7 +33,7 @@
     // Personal button: justinsaintvo@gmail.com
     injectEmail(
         "#email-btn",
-        "ovtniasnits tsuj".replace(/\s+/g, ""),
+        "ovtniasnitsuj".replace(/\s+/g, ""),
         "liamg",
         "moc"
     );
@@ -41,7 +41,7 @@
     // (Optional) If a plain-text contact link exists elsewhere (safe no-op if absent)
     injectEmail(
         "#me",
-        "ovtniaSnisitSuj".toLowerCase(),
+        "oVTNiasNITsUj".toLowerCase(),
         "liamg",
         "moc"
     );
